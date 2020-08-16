@@ -5,33 +5,11 @@
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-.lifestyle {
-  display: flex;
-  flex-wrap: wrap;
-
-  h1 {
-    width: 100%;
-  }
-
-  h2 {
-    width: 100%;
-  }
-
-  &__blocks {
-    flex: 0 0 480px;
-  }
-
-  &__legends {
-    flex: 0 0 150px;
-    margin-left: 128px;
-  }
+  padding: 10px;
 }
 
 .blocks {
   display: flex;
-  width: 480px;
   flex-flow: wrap;
 
   &__item {
@@ -43,13 +21,13 @@
 
 .legends {
   .legend {
-    display: flex;
     height: 34px;
     margin-bottom: 2px;
     align-items: center;
 
     &__color {
-      flex: 0 0 24px;
+      display: inline-block;
+      width: 24px;
       height: 24px;
       text-align: center;
       align-items: center;
@@ -58,7 +36,74 @@
     }
 
     &__type {
+      display: inline-block;
       margin-left: 12px;
+    }
+  }
+}
+
+@media (min-width: 481px) {
+  .lifestyle {
+    display: flex;
+    flex-wrap: wrap;
+    width: 800px;
+  
+    h1 {
+      width: 100%;
+    }
+  
+    h2 {
+      width: 100%;
+    }
+  
+    &__blocks {
+      flex: 0 0 480px;
+    }
+  
+    &__legends {
+      flex: 0 0 150px;
+      margin-left: 128px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .lifestyle {
+    display: flex;
+    flex-wrap: wrap;
+
+    h1 {
+      order: 0;
+      width: 100%;
+      margin: 0 0 24px 0;
+    }
+
+    h3 {
+      order: 2;
+      width: 100%;
+      margin: 0 0 18px 0;
+    }
+
+    h2 {
+      order: 1;
+      width: 100%;
+      margin: 0 0 18px 0;
+    }
+
+    .blocks {
+      order: 4;
+      width: 100%;
+    }
+
+    .legends {
+      order: 3;
+      width: 100%;
+      margin-bottom: 18px;
+      
+      .legend {
+        display: inline-block;
+        margin-right: 12px;
+      }
     }
   }
 }

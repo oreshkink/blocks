@@ -10,19 +10,9 @@ export const activities = [
     color: '#F2B591'
   },
   {
-    type: 'Meditation',
-    blocksCount: 2,
-    color: '#F2D2B6',
-  },
-  {
     type: 'Social',
     blocksCount: 12,
     color: '#194159',
-  },
-  {
-    type: 'Reading',
-    blocksCount: 2,
-    color: '#D4DBF5'
   },
   {
     type: 'Eating',
@@ -33,5 +23,15 @@ export const activities = [
     type: 'Sport',
     blocksCount: 3,
     color: '#0A1747',
+  },
+  {
+    type: 'Meditation',
+    blocksCount: 2,
+    color: '#F2D2B6',
+  },
+  {
+    type: 'Reading',
+    blocksCount: 2,
+    color: '#D4DBF5'
   },
 ];
