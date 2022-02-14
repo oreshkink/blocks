@@ -29,17 +29,17 @@ steps:
       mount:
         - ./node_modules
 
-  - name: build-image
-    image: plugins/docker
-    pull: if-not-exists
-    settings:
-      repo: oreshkin/blocks
-      cache_from: oreshkin/blocks:latest
-      tags: latest
-      dockerfile: Dockerfile
-      username: oreshkin
-      password: 3$/yXFtrs9MFN
-      target: build-stage
+  # - name: build-image
+  #   image: plugins/docker
+  #   pull: if-not-exists
+  #   settings:
+  #     repo: oreshkin/blocks
+  #     cache_from: oreshkin/blocks:latest
+  #     tags: latest
+  #     dockerfile: Dockerfile
+  #     username: oreshkin
+  #     password: 3$/yXFtrs9MFN
+  #     target: build-stage
 
 volumes:
   - name: cache
