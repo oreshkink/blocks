@@ -15,6 +15,7 @@ steps:
 
   - name: docker
     image: plugins/docker
+    pull: if-not-exists
     settings:
       repo: oreshkin/blocks
       tags: latest
