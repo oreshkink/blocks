@@ -1,14 +1,11 @@
 kind: pipeline
-type: docker
-name: build
+name: default
 
 steps:
-  - name: build-frontend-image
-    pull: if-not-exists
+  - name: build-image
     image: plugins/docker
     settings:
-      registry: hub.docker.com
-      repo: hub.docker.com/oreshkin/blocks
+      repo: oreshkin/blocks
       tags: latest
       dockerfile: Dockerfile
       username:
