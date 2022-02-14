@@ -16,4 +16,4 @@ steps:
 
 trigger:
   event:
-    - push
+    - promote
