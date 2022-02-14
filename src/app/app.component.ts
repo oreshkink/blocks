@@ -14,11 +14,11 @@ export class AppComponent {
   busyBlocks = 0;
 
   constructor() {
-    this.blocks = Array(this.totalBlocks).fill(0).map((x,i)=>i);
+    this.blocks = Array(this.totalBlocks).fill(0).map((x, i) => i);
     this.busyBlocks = this.activities.reduce(
       (accumulator, activity) => {
         return accumulator + activity.blocksCount;
       }, 0
-    )
+    );
   }
 }
