@@ -3,7 +3,33 @@ type: docker
 name: default
 
 steps:
-  - name: docker
+  - name: restore-cache
+    image: drillster/drone-volume-cache
+    volumes:
+    - name: cache
+      path: /cache
+    settings:
+      restore: true
+      mount:
+        - ./node_modules
+
+  - name: lint
+    image: node:16.14-alpine
+    commands:
+      - npm ci
+      - npm run lint
+
+  - name: restore-cache
+    image: drillster/drone-volume-cache
+    volumes:
+    - name: cache
+      path: /cache
+    settings:
+      restore: true
+      mount:
+        - ./node_modules
+
+  - name: build-image
     image: plugins/docker
     pull: if-not-exists
     settings:
@@ -14,3 +40,8 @@ steps:
       username: oreshkin
       password: 3$/yXFtrs9MFN
       target: build-stage
+
+volumes:
+  - name: cache
+    host: 
+      path: /tmp/drone-ideal-cache/cache
