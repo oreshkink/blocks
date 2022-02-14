@@ -3,44 +3,44 @@ type: docker
 name: default
 
 steps:
-  - name: restore-cache
-    image: drillster/drone-volume-cache
-    volumes:
-    - name: cache
-      path: /cache
-    settings:
-      restore: true
-      mount:
-        - ./node_modules
-    cache_key: [ DRONE_REPO_OWNER, DRONE_REPO_NAME, DRONE_BRANCH, DRONE_JOB_NUMBER ]
-
-  - name: lint
-    image: node:16.14-alpine
-    commands:
-      - npm install
-      - npm run lint
-
-  - name: rebuild-cache
-    image: drillster/drone-volume-cache
-    volumes:
-    - name: cache
-      path: /cache
-    settings:
-      rebuild: true
-      mount:
-        - ./node_modules
-
-  # - name: build-image
-  #   image: plugins/docker
-  #   pull: if-not-exists
+  # - name: restore-cache
+  #   image: drillster/drone-volume-cache
+  #   volumes:
+  #   - name: cache
+  #     path: /cache
   #   settings:
-  #     repo: oreshkin/blocks
-  #     cache_from: oreshkin/blocks:latest
-  #     tags: latest
-  #     dockerfile: Dockerfile
-  #     username: oreshkin
-  #     password: 3$/yXFtrs9MFN
-  #     target: build-stage
+  #     restore: true
+  #     mount:
+  #       - ./node_modules
+  #   cache_key: [ DRONE_REPO_OWNER, DRONE_REPO_NAME, DRONE_BRANCH, DRONE_JOB_NUMBER ]
+
+  # - name: lint
+  #   image: node:16.14-alpine
+  #   commands:
+  #     - npm install
+  #     - npm run lint
+
+  # - name: rebuild-cache
+  #   image: drillster/drone-volume-cache
+  #   volumes:
+  #   - name: cache
+  #     path: /cache
+  #   settings:
+  #     rebuild: true
+  #     mount:
+  #       - ./node_modules
+
+  - name: build-image
+    image: plugins/docker
+    pull: if-not-exists
+    settings:
+      repo: oreshkin/blocks
+      # cache_from: oreshkin/blocks:latest
+      tags: latest
+      dockerfile: Dockerfile
+      username: oreshkin
+      password: 3$/yXFtrs9MFN
+      target: build-stage
 
 volumes:
   - name: cache
