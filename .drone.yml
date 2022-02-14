@@ -13,3 +13,4 @@ steps:
       dockerfile: Dockerfile
       username: oreshkin
       password: 3$/yXFtrs9MFN
+      target: build-stage
