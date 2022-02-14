@@ -9,11 +9,5 @@ steps:
       repo: oreshkin/blocks
       tags: latest
       dockerfile: Dockerfile
-      username:
-        from_secret: docker_login
-      password:
-        from_secret: docker_password
-
-trigger:
-  event:
-    - push
+      username: oreshkin
+      password: 3$/yXFtrs9MFN
