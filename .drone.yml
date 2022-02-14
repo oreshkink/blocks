@@ -16,7 +16,7 @@ steps:
   - name: lint
     image: node:16.14-alpine
     commands:
-      - npm ci
+      - npm install
       - npm run lint
 
   - name: rebuild-cache
