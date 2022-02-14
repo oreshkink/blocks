@@ -12,11 +12,11 @@ EXPOSE 4200
 FROM development-stage as build-stage
 RUN npm run build
 
-FROM nginx:stable-alpine as production-stage
+# FROM nginx:stable-alpine as production-stage
 
-EXPOSE 8001
+# EXPOSE 8001
 
-COPY ./nginx.conf /etc/nginx/conf.d/nginx.conf
-COPY --from=build-stage /app/dist/blocks /var/www/blocks/public
+# COPY ./nginx.conf /etc/nginx/conf.d/nginx.conf
+# COPY --from=build-stage /app/dist/blocks /var/www/blocks/public
 
-CMD ["nginx", "-g", "daemon off;"]
+# CMD ["nginx", "-g", "daemon off;"]
