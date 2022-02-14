@@ -3,6 +3,16 @@ type: docker
 name: default
 
 steps:
+  - name: restore-cache
+    image: drillster/drone-volume-cache
+    volumes:
+    - name: cache
+      path: /cache
+    settings:
+      restore: true
+      mount:
+        - /app/node_modules
+
   - name: docker
     image: plugins/docker
     settings:
@@ -11,3 +21,18 @@ steps:
       dockerfile: Dockerfile
       username: oreshkin
       password: 3$/yXFtrs9MFN
+
+  - name: rebuild-cache
+    image: drillster/drone-volume-cache
+    volumes:
+    - name: cache
+      path: /cache
+    settings:
+      rebuild: true
+      mount:
+        - /app/node_modules
+
+volumes:
+  - name: cache
+    host: 
+      path: /tmp/cache
