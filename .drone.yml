@@ -35,14 +35,8 @@ steps:
     pull: if-not-exists
     settings:
       repo: oreshkin/blocks
-      # cache_from: oreshkin/blocks:latest
       tags: latest
       dockerfile: Dockerfile
       username: oreshkin
       password: 3$/yXFtrs9MFN
       target: build-stage
-
-volumes:
-  - name: cache
-    host: 
-      path: /tmp/drone-ideal-cache/cache
