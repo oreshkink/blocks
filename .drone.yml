@@ -3,16 +3,16 @@ type: docker
 name: default
 
 steps:
-  # - name: restore-cache
-  #   image: drillster/drone-volume-cache
-  #   volumes:
-  #   - name: cache
-  #     path: /cache
-  #   settings:
-  #     restore: true
-  #     mount:
-  #       - ./node_modules
-  #   cache_key: [ DRONE_REPO_OWNER, DRONE_REPO_NAME, DRONE_BRANCH, DRONE_JOB_NUMBER ]
+  - name: restore-cache
+    image: drillster/drone-volume-cache
+    volumes:
+    - name: cache
+      path: /cache
+    settings:
+      restore: true
+      mount:
+        - ./node_modules
+    cache_key: [ DRONE_REPO_OWNER, DRONE_REPO_NAME, DRONE_BRANCH, DRONE_JOB_NUMBER ]
 
   - name: lint
     image: node:16.14-alpine
@@ -20,15 +20,15 @@ steps:
       - npm install
       - npm run lint
 
-  # - name: rebuild-cache
-  #   image: drillster/drone-volume-cache
-  #   volumes:
-  #   - name: cache
-  #     path: /cache
-  #   settings:
-  #     rebuild: true
-  #     mount:
-  #       - ./node_modules
+  - name: rebuild-cache
+    image: drillster/drone-volume-cache
+    volumes:
+    - name: cache
+      path: /cache
+    settings:
+      rebuild: true
+      mount:
+        - ./node_modules
 
   - name: build-image
     image: plugins/docker
